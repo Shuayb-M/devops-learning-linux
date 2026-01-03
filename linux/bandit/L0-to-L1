@@ -1,13 +1,15 @@
 ## Bandit Level 0 → Level 1
 
-**Challenge:** Find a file with these properties:
+**Challenge:** Find a file with these properties then display its contents to find the password:
 - Named readme
 - Located in Home Directory
 
 **Solution:**
 ```
-ls readme
-cat readme
+STEP1: ls readme
+
+STEP2: cat readme
+
 ```
 
 **Explanation:**
