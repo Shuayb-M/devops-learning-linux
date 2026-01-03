@@ -1,0 +1,22 @@
+## Bandit Level 0 → Level 1
+
+**Challenge:** Find a file with these properties:
+- Named readme
+- Located in Home Directory
+
+**Solution:**
+```
+ls readme
+cat readme
+```
+
+**Explanation:**
+- ls readme, command is used to list files and folders in the directory
+- cat readme, cat command output the contents of files in the terminal
+
+**Password:** [ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If]
+
+**What I learned:** 
+
+- The `ls` command is incredibly powerful for helping users understand directory structure and file permissions
+- The `cat` command is useful for quick viewing and handling of file contents.
