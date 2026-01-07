@@ -1,0 +1,27 @@
+## Bandit Level 2 → Level 3
+
+
+**Challenge:** 
+The password for the next level is stored in a file called --spaces in this filename-- located in the home directory
+
+
+**Solution & Explanation:****
+```
+STEP 1: cd ~        
+# navigates into home directory
+
+STEP 2: cat ls      
+# list files and folders in the home directory
+
+STEP 3: cat -- "--spaces in this filename--" 
+# cat command outputs the contents of files while -- stops reading options 
+beacuse without it cat might think the filename is a command option.
+The file is also in double quotes ("...") since computers get confused by spaces.
+Quotes tell the computer: "This whole thing is one file name."
+
+```
+**Password:** [MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx]
+
+**What I learned:** 
+
+- 
