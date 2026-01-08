@@ -1,0 +1,38 @@
+## Bandit Level 3 → Level 4
+
+
+**Challenge:** 
+
+The password for the next level is stored in a hidden file in the inhere directory.
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls         
+# list files and folders in the home directory
+
+STEP 2: cd inhere      
+# navigates into inhere directory
+
+STEP 3: ls
+# check what files/directories can visibly be seen in the inhere directory.
+# nothing is shown
+
+STEP 4: ls -a
+# putting -a as an option let's us see any potential hidden files/directories
+
+STEP 5: cat "...Hiding-From-You"
+# this command will show the contents of the hidden file in which the password for the next level is stored.
+
+```
+**Password:** [2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ]
+
+**What I learned:** 
+
+The quotes ("...") tell Linux to treat everything inside as one single name.
+
+This is useful when a file name has:
+
+- spaces
+- weird symbols
+- characters that might confuse the terminal
