@@ -29,7 +29,7 @@ STEP 5: cat "...Hiding-From-You"
 
 **What I learned:** 
 
-The quotes ("...") tell Linux to treat everything inside as one single name.
+The double quotes ("...") tell Linux to treat everything inside the double quotes as one single name.
 
 This is useful when a file name has:
 
