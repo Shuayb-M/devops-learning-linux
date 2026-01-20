@@ -1,0 +1,68 @@
+## Bandit Level 5 → Level 6
+
+
+**Challenge:** 
+
+The password for the next level is stored in a file somewhere under the inhere directory 
+and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+
+**Solution & Explanation:****
+```
+STEP 1: ls         
+# list files and folders in the home directory
+
+STEP 2: cd inhere      
+# navigates into inhere directory
+
+STEP 3: ls
+# check what files/directories can visibly be seen in the inhere directory
+# 20 folders are shown. All beginning with the name maybehere followed by a double digit number sequence
+starting from 00 and ending at 19 (maybehere00, maybehere01, maybehere02, etc.)
+
+STEP 4: find . -size 1033c
+# looks through entire directory for files and possibly folders that match 1033 bytes in size.
+# ./maybehere07/.file2 is the path to .file2
+
+STEP 5: ls -la ./maybehere07
+# longview list of all files in folder maybehere07 which also includes hidden files
+# hidden files start with . in their file name
+# the file we are interested in is a hidden file so it's important we include 
+the -a option to see the permissions of that file is not executable
+
+STEP 6: file .* OR file ./.*
+# this command will display the content type of each hidden file in the folder
+# the file we are interented in should be ASCII text which is considered as human-readable text
+
+STEP 7: cat .file2
+
+# since .file2 meets all the above requirements it is safe to assume 
+the password to the next level is contained within it
+
+```
+**Password:** [HWasnPhtq9AVKe0dmk45nxy20cvUa6EG]
+
+
+**SINGLE COMMAND LINE to find desired file within the folder of interest**
+
+find . -type f -size 1033c ! -executable -exec file {} \; | grep text
+
+
+**What I learned:** 
+
+-exec file {} \;
+
+👉 “For each file you find, run the file command on it”
+
+Very important part:
+
+-exec → “do a command”
+
+file → checks what kind of file it is
+
+{} → “this file”
+
+\; → “end of command”
