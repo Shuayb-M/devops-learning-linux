@@ -1,0 +1,52 @@
+## Bandit Level 4 → Level 5
+
+
+**Challenge:** 
+
+The password for the next level is stored in the only human-readable file in the inhere directory. 
+Tip: if your terminal is messed up, try the “reset” command.
+
+**Solution & Explanation:****
+```
+STEP 1: ls         
+# list files and folders in the home directory
+
+STEP 2: cd inhere      
+# navigates into inhere directory
+
+STEP 3: ls
+# check what files/directories can visibly be seen in the inhere directory
+# 10 files are shown. All beginning with the name -file followed by a double digit number sequence
+starting from 00 and ending at 09 (-file00, -file01, -file02, etc.)
+
+STEP 4: cat -- "-file*" OR cat ./-file*
+# either one of these commands will display all of the contents of all of the files all at once
+# lots of computer junk is being displayed along side the password so it is difficult to discern what the password could be 
+
+STEP 5: file -- *
+# checks all the contents of every single file and displays info of each file's content type
+# since our files all begin with - we use -- to disable the option feature so as to not make it confused
+# -file07 is the only file with ASCII text which is considered a human-readable file
+
+STEP 6: cat -- "-file07" 
+        cat -- -file07 
+        cat ./-file07
+
+# these are the different commands that will display the contents of the file
+
+
+```
+**Password:** [4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw]
+
+**What I learned:** 
+
+the file commmand is a command that checks inside a file and does not care 
+about the name but rather cares about the content.
+
+file → asks Linux what type a file is (text, picture, program, junk, etc.)
+
+* → means all files in this folder
+
+ASCII text = clean words and numbers
+
+data = computer junk
