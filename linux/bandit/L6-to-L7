@@ -1,0 +1,53 @@
+## Bandit Level 6 → Level 7
+
+
+**Challenge:** 
+
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+owned by user bandit7
+owned by group bandit6
+33 bytes in size
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# quick check of what’s in your current home directory
+# (the password is NOT in your home folder for this level)
+
+STEP 2: find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+# find → search for something
+# / → start searching from the root of the whole system (everywhere)
+# -type f → only look for files (not folders)
+# -user bandit7 → file owner must be bandit7
+# -group bandit6 → file group must be bandit6
+# -size 33c → exactly 33 bytes (c = bytes)
+# 2>/dev/null → hides permission denied errors so output stays clean
+
+STEP 3: cat /var/lib/dpkg/info/bandit7.password
+# open the file that matches the requirements
+# it contains the password for bandit7
+
+
+```
+**Password:** [morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj]
+
+
+**SINGLE COMMAND LINE to find desired file within the folder of interest**
+
+find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null -exec cat {} \;
+
+
+**What I learned:** 
+
+2>/dev/null
+
+👉 “Send error messages away so they don’t clutter my results”
+
+Very important part:
+
+2> → redirects stderr (error output)
+
+/dev/null → a “black hole” file that discards whatever you send into it
+
+So when find hits folders you can’t access, you don’t get spammed with Permission denied messages.
