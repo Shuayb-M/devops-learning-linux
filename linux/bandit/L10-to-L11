@@ -1,0 +1,48 @@
+
+## Bandit Level 10 → Level 11
+
+
+**Challenge:** 
+
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# list files in the current directory
+# data.txt should be present
+
+STEP 2: file data.txt
+# checks what kind of file it is
+# it should indicate it's text (base64-encoded content)
+
+STEP 3: cat data.txt
+# shows the encoded text
+
+STEP 4: base64 -d data.txt
+# base64 is the tool for encoding/decoding base64
+# -d means "decode"
+# the output is the real password in plain text
+
+```
+**Password:** [dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr]
+
+
+**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+
+base64 -d data.txt
+
+
+**What I learned:** 
+
+base64 data.txt ENCODES
+
+base64 -d data.txt DECODES
+
+Mental model:
+
+🧾 Text → Secret wrapping paper
