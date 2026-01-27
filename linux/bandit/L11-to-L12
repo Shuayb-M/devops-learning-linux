@@ -1,0 +1,65 @@
+
+## Bandit Level 11 → Level 12
+
+
+**Challenge:** 
+
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# list files in the current directory
+# data.txt is present
+
+STEP 2: cat data.txt
+# shows the scrambled text
+# letters look shifted, but numbers/symbols stay the same
+
+STEP 3: cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+# tr translates characters (character substitution)
+# this mapping performs ROT13:
+# A->N, B->O, ..., M->Z, N->A, ...
+# same idea for lowercase letters
+# output becomes the real password in plain text
+
+```
+**Password:** [7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4]
+
+
+**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+
+**What I learned:** 
+
+First argument: 'A-Za-z'
+
+This is SET 1 (what to replace). 
+
+'A-Z'
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+'a-z'
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+'A-Za-z'
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+
+Second argument: 'N-ZA-Mn-za-m'
+
+This is SET 2 (what to replace WITH).
+
+N O P Q R S T U V W X Y Z A B C D E F G H I J K L M n o p q r s t u v w x y z a b c d e f g h i j k l m
+
+when tr sees:
+
+A → it outputs N
+
+n → it outputs a
+
+z → it outputs m
