@@ -1,0 +1,48 @@
+
+## Bandit Level 9 → Level 10
+
+
+**Challenge:** 
+
+The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+
+Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# list files in the current directory
+# data.txt should be present
+
+STEP 2: file data.txt
+# checks what kind of file it is
+# this file is mostly "data" (not plain text), so we need to extract readable strings
+
+STEP 3: strings data.txt
+# pulls out human-readable text from inside a binary/data file
+# output will contain many readable lines
+
+STEP 4: strings data.txt | grep "==="
+# grep filters only lines that contain several '=' characters
+# one of these lines will show the password after the ====
+
+
+```
+**Password:** [FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey]
+
+
+**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+
+sort data.txt | uniq -u
+
+
+**What I learned:** 
+
+strings command → “Extract readable text from a file that isn’t normal plain text.”
+
+strings data.txt → prints only the human-readable parts
+
+grep "===" → narrows results to lines that match the clue (several =)
+
