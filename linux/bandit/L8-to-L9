@@ -27,7 +27,8 @@ STEP 4: sort data.txt
 # still difficult to find unique text
 
 STEP 5: sort data.txt | uniq -u
-
+# output of first command will be used by uniq command as an argument 
+with the -u option that will show only unique (non-repeated) lines
 
 ```
 **Password:** [4CKMh1JI91bUIZZPXDqGanal4xvAg0JM]
