@@ -33,7 +33,7 @@ STEP 4: strings data.txt | grep "==="
 **Password:** [FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 sort data.txt | uniq -u
 
