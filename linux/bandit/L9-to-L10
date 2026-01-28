@@ -35,8 +35,7 @@ STEP 4: strings data.txt | grep "==="
 
 **USEFUL SINGLE COMMAND LINE**
 
-sort data.txt | uniq -u
-
+strings data.txt | grep "==="
 
 **What I learned:** 
 
