@@ -26,7 +26,7 @@ STEP 2: echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000
 **Password:** [8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 
 echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000
