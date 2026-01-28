@@ -1,0 +1,79 @@
+
+## Bandit Level 12 → Level 13
+
+
+**Challenge:** 
+
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+Commands you may need to solve this level
+grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir, cp, mv, file
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# list files in the current directory
+# data.txt should be present
+
+STEP 2: mkdir /tmp/bandit12
+# make a private working folder (safe place to create files)
+
+STEP 3: cp data.txt /tmp/bandit12
+# copy the challenge file into your temp workspace
+
+STEP 4: cd /tmp/bandit12
+# move into your workspace
+
+STEP 5: xxd -r data.txt > data.bin
+# xxd -r reverses a hexdump back into the original binary
+# data.bin is now the “real” compressed file (but we don't know what type yet)
+
+STEP 6: file data.bin
+# tells you what kind of file it currently is (gzip, bzip2, tar, etc.)
+# we will repeat this pattern: file -> rename -> decompress -> file again
+
+STEP 7: mv data.bin data.gz
+# rename it to match what file reports (example: gzip)
+# (the extension helps you remember what tool to use)
+
+STEP 8: gunzip data.gz
+# decompress gzip
+# this produces a new file (usually named data)
+
+STEP 9: file data
+# check the new file type after decompression
+
+STEP 10: (repeat) rename + decompress based on what "file" says
+# common sequence you’ll see in this level:
+# gzip -> bzip2 -> gzip -> tar -> tar -> bzip2 -> tar -> gzip -> plain text
+
+# Examples of the tools you’ll use during the loop:
+# - gzip:    gunzip file.gz
+# - bzip2:   bunzip2 file.bz2
+# - tar:     tar -xf archive.tar
+
+STEP 11: cat data8
+# once file says "ASCII text", cat it
+# the output contains the password for bandit13
+
+
+```
+**Password:** [FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn]
+
+
+**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+
+single line command doesn't apply to this challenge
+
+**What I learned:** 
+
+xxd -r ----> Reverses a hexdump back into the original binary file
+
+xxd → tool that can create or reverse hex representations
+
+-r → reverse mode (hex → original binary)
+
+> data.bin → save the rebuilt binary into a new file so you can decompress it step by step
+
+name files to match a file's reality, for example, if a file has gzip compressed data within it give the file an extension of .gz (ex. file.gz)
