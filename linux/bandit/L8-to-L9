@@ -34,7 +34,7 @@ with the -u option that will show only unique (non-repeated) lines
 **Password:** [4CKMh1JI91bUIZZPXDqGanal4xvAg0JM]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 sort data.txt | uniq -u
 
