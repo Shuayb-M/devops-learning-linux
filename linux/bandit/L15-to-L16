@@ -29,7 +29,7 @@ STEP 3: paste the bandit15 password and press Enter
 **Password:** [kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINES**
 
 
 openssl s_client -connect localhost:30001
