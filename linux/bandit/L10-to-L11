@@ -32,7 +32,7 @@ STEP 4: base64 -d data.txt
 **Password:** [dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 base64 -d data.txt
 
