@@ -33,7 +33,7 @@ STEP 3: cat /var/lib/dpkg/info/bandit7.password
 **Password:** [morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj]
 
 
-**SINGLE COMMAND LINE to find desired file within the folder of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null -exec cat {} \;
 
