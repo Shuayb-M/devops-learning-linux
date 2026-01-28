@@ -31,7 +31,7 @@ STEP 3: cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 **Password:** [7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 
