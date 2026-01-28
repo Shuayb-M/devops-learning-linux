@@ -40,7 +40,7 @@ STEP 5: cat /etc/bandit_pass/bandit14
 **Password:** [MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+**USEFUL SINGLE COMMAND LINE**
 
 ssh -i mykey.private bandit14@bandit.labs.overthewire.org -p 2220
 
