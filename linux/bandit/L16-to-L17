@@ -27,48 +27,37 @@ STEP 3: openssl s_client -connect localhost:PORT -ign_eof
 # test each open port from the scan results
 # we are looking for the one that responds like an SSL service that expects a password
 
-STEP 4: printf "%s\n" "$(cat /etc/bandit_pass/bandit16)" | openssl s_client -connect localhost:PORT -ign_eof 2>/dev/null
-# sends the bandit16 password into that SSL connection
+STEP 4: Enter bandit16 password
+# send the bandit16 password into that SSL connection
 # the correct port will respond with an SSH private key (starts with “-----BEGIN ... PRIVATE KEY-----”)
 
-STEP 5: mkdir -p /tmp/bandit16 && cd /tmp/bandit16
-# make a safe workspace to store the private key
+STEP 5: exit, vim L17key.private
+# exit from overthewire server back into local host and add contents from the SSH private key to a vim file named L17key.private within local host
 
-STEP 6: (save the returned key into a file)
-# copy/paste the full key output into a file, for example:
-# nano bandit17.key
-# (paste everything from BEGIN to END, save and exit)
-
-STEP 7: chmod 600 bandit17.key
+STEP 6: chmod 600 bandit17.key
 # lock down key permissions so SSH will accept it
 
-STEP 8: ssh -i bandit17.key bandit17@localhost -p 2220
-# log in as bandit17 using the private key you received
+STEP 7: ssh -i L17key.private bandit17@bandit.labs.overthewire.org -p 2220
+# ssh → connect to another account
+# -i L17key.private → use this private key to authenticate
+# bandit17@bandit.labs.overthewire.org → log in as user bandit17 and connect to the remote machine called bandit.labs.overthewire.org
+# -p 2220 → Bandit SSH runs on port 2220
+
+STEP 8: cat /etc/bandit_pass/bandit17
+# now that you're logged in as bandit17, you have permission to read it
+# the output is the password for bandit17
+
 
 
 ```
-**Password:** [kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx]
+**Password:** [EReVavePLFHtFlFsjn3hyzMlvSuSAcRD]
 
-
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
-
-
-openssl s_client -connect localhost:30001
-
-or 
-
-openssl s_client -connect localhost:30001 -ign_eof
 
 
 **What I learned:** 
 
-openssl s_client is a testing tool. It was designed for:
-	•	debugging
-	•	checking certificates
-	•	testing secure services
-Some services:
-	•	talk after you finish
-	•	send data slowly
-	•	wait before replying
+nmap -p 31000-32000 localhost → finds which doors are open
 
--ign_eof = stay connected no matter what (used in cases where the connection is ended before the server can respond back to message you sent)
+openssl s_client ... → tests whether the service behind a door speaks SSL
+
+saving the returned private key + chmod 600 → required to use it with ssh -i
