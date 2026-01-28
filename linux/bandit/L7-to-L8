@@ -31,10 +31,6 @@ STEP 4: grep "millionth" data.txt
 **Password:** [dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc]
 
 
-**SINGLE COMMAND LINE to find desired line of text within the file of interest**
-
-grep millionth data.txt
-
 **What I learned:** 
 
 When searching for text, double quotations should be used.
