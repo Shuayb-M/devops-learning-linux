@@ -1,0 +1,53 @@
+
+## Bandit Level 17 → Level 18
+
+**Challenge:** 
+
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
+
+Commands you may need to solve this level
+cat, grep, ls, diff
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# list files in the current directory
+# you should see: passwords.old and passwords.new
+
+STEP 2: wc -l passwords.old passwords.new
+# optional: confirms both files have many lines
+# we need a comparison tool, not manual reading
+
+STEP 3: diff passwords.old passwords.new
+# diff compares two files line-by-line
+# it prints the lines that are different
+
+STEP 4: diff passwords.old passwords.new | grep ">"
+# in diff output:
+# lines starting with "<" come from the old file
+# lines starting with ">" come from the new file
+# the new password is the changed line in passwords.new, so we want the ">" line
+
+STEP 5: diff passwords.old passwords.new | grep ">" | cut -c3-
+# cut -c3- removes the leading "> " so you see only the password text
+
+
+```
+**Password:** [x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO]
+
+
+
+**What I learned:** 
+
+diff shows exactly what changed between two files.
+
+diff passwords.old passwords.new → compares content line-by-line
+
+the symbol > means lines belong to the new file
+
+the symbol < means lines belong to the new file
+
+cut -c3- → strips the diff marker (> ) so you get the raw password, displays from 3rd character until the end
