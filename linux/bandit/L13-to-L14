@@ -1,0 +1,55 @@
+
+## Bandit Level 13 → Level 14
+
+
+**Challenge:** 
+
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Look at the commands that logged you into previous bandit levels, and find out how to use the key for this level.
+
+Commands you may need to solve this level
+ssh, scp, umask, chmod, cat, nc, install
+
+
+**Solution & Explanation:****
+```
+STEP 1: ls
+# list files in the current directory (bandit13’s home)
+# you should see: sshkey.private
+
+STEP 2: file sshkey.private
+# confirms it’s an SSH private key file
+
+STEP 3: cat sshkey.private
+# copy contents, contents to be store on my personal machine
+
+STEP 4: exit, vim mykey.private
+# exit from overthewire server back into local host and add contents from sshkey.private to a vim file named mykey.private within local host
+
+
+STEP 4: ssh -i mykey.private bandit14@bandit.labs.overthewire.org -p 2220
+# ssh → connect to another account
+# -i sshkey.private → use this private key to authenticate
+# bandit14@bandit.labs.overthewire.org → log in as user bandit14 and connect to the remote machine called bandit.labs.overthewire.org
+# -p 2220 → Bandit SSH runs on port 2220
+
+STEP 5: cat /etc/bandit_pass/bandit14
+# now that you're logged in as bandit14, you have permission to read it
+# the output is the password for bandit14
+
+```
+**Password:** [FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn]
+
+
+**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+
+ssh -i mykey.private bandit14@bandit.labs.overthewire.org -p 2220
+
+**What I learned:** 
+
+ssh -i keyfile user@host -p PORT (“Log in using a private key instead of a password.”)
+
+-i sshkey.private → “use this identity (key) file”
+
+chmod 600 → “make the key private enough for SSH to accept it”
+
+-p 2220 → “connect to the correct SSH port for Bandit”
