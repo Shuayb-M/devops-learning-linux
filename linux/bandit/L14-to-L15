@@ -1,0 +1,37 @@
+
+## Bandit Level 14 → Level 15
+
+
+**Challenge:** 
+
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+Commands you may need to solve this level
+ssh, telnet, nc, openssl, s_client, nmap
+
+
+**Solution & Explanation:****
+```
+STEP 1: cat /etc/bandit_pass/bandit14
+# read the current password (bandit14)
+# this is the exact string the service expects
+
+STEP 2: echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000
+# echo prints the password followed by a newline
+# nc opens a plain TCP connection to localhost on port 30000
+# the password is sent to the service
+# the service responds with the password for bandit15
+
+```
+**Password:** [MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS]
+
+
+**SINGLE COMMAND LINE to find desired line of text within the file of interest**
+
+
+echo "MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS" | nc localhost 30000
+
+
+**What I learned:** 
+
+nc localhost 30000 → connects to the service listening on that port
