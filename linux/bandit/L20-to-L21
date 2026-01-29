@@ -17,12 +17,33 @@ ssh, nc, cat, bash, screen, tmux, Unix ‘job control’ (bg, fg, jobs, &, CTRL-
 **Solution & Explanation:****
 ```
 
+STEP 1: cat /etc/bandit_pass/bandit20
+# get the current password (bandit20)
+# we must send this exact password to suconnect through a network connection
 
+STEP 2: ls -l
+# confirm the suconnect binary exists
+# it should be setuid (has an 's' in permissions)
+
+STEP 3: nc -lvp 9999
+# open a second terminal OR run this in the background
+# choose a port like 9999
+# nc -l = listen mode (act like a server)
+# v = Prints extra information like when someone connects, from where they connect, making it an amazing flag for learning and debugging.
+# -p 9999 = listen on port 9999
+
+STEP 4: ./suconnect 9999 -ign_eof
+# suconnect connects to localhost:9999
+# it reads the line your netcat listener sends (bandit20 password)
+# if correct, suconnect prints the bandit21 password back
+# -ign_eof = Even if my input ends, stay connected and keep listening.
 
 
 ```
-**Password:** [0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO]
+**Password:** [EeoULMCra2q0dSkYj561DX7s1CpBuOBt]
 
 
 **What I learned:** 
+
+nc -lvp PORT → makes your terminal act like a server (listening)
 
