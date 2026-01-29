@@ -1,0 +1,39 @@
+
+## Bandit Level 19 → Level 20
+
+**Challenge:** 
+
+To gain access to the next level, you should use the setuid binary in the homedirectory. 
+Execute it without arguments to find out how to use it. The password for this level can be found 
+in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+
+
+**Solution & Explanation:****
+```
+
+STEP 1: ls -l
+# list files with permissions
+# you should see a file like: bandit20-do
+# it will have an "s" in the user execute bit (setuid), something like:
+# -rwsr-x--- ...
+
+STEP 2: ./bandit20-do id
+# run the setuid program and ask it to run "id"
+# this confirms the command is executed as bandit20 (not bandit19)
+
+STEP 3: ./bandit20-do cat /etc/bandit_pass/bandit20
+# use the setuid program to run cat as bandit20
+# this prints the password for bandit20 (next level)
+
+
+```
+**Password:** [0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO]
+
+
+**What I learned:** 
+
+s in permissions (-rws...) → setuid is enabled
+
+./bandit20-do <command> → runs <command> as bandit20
+
+this is a controlled way to “borrow” bandit20 permissions to read its password
